@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ODS 8 - Trabajo Decente y Crecimiento Económico</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+
+<style>
+/* === BASE GENERAL === */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #e8f0f7 0%, #d6e6f2 100%);
+  color: #333;
+  overflow-x: hidden;
+}
+
+
+/* === ANIMACIONES === */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+
+
+/* === HEADER === */
+header {
+  background: linear-gradient(rgba(0, 122, 204, 0.8), rgba(0, 122, 204, 0.8)),
+              url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1600&q=80') center/cover fixed;
+  color: white;
+  padding: 90px 20px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+header h1 {
+  margin: 0;
+  font-size: 46px;
+  font-weight: 700;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.4);
+}
+header p {
+  font-size: 18px;
+  max-width: 800px;
+  margin: 15px auto 0;
+  line-height: 1.6;
+}
+
+
+/* === SECCIONES === */
+section {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+.intro {
+  text-align: center;
+  margin-bottom: 40px;
+  animation: fadeIn 1.2s ease;
+}
+.intro h2 {
+  color: #007acc;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+
+/* === GRID === */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+
+/* === TARJETAS === */
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  height: 330px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+  animation: fadeIn 1.2s ease;
+}
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 1;
+  transition: background 0.3s;
+}
+.card:hover::before {
+  background: rgba(0,0,0,0.6);
+}
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+.card-content {
+  position: relative;
+  z-index: 2;
+  padding: 25px;
+}
+.card h3 {
+  margin-bottom: 10px;
+  font-size: 22px;
+  color: #fff;
+}
+.card p {
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+.btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+.btn:hover {
+  background-color: #218838;
+  transform: translateY(-3px);
+}
+
+
+/* === IMÁGENES DE FONDO (ACTUALIZADAS Y CONFIABLES) === */
+.card[data-page="trabajo-decente"] {
+  background: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
+}
+.card[data-page="juventud-empleo"] {
+  background: url('https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
+}
+.card[data-page="emprendimiento"] {
+  background: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
+}
+.card[data-page="igualdad-genero"] {
+  background: url('https://images.unsplash.com/photo-1573496799652-408c2ac9fe84?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
+}
+.card[data-page="trabajo-infantil"] {
+  background: url('https://images.unsplash.com/photo-1601758123927-196a6aa05793?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
+}
+.card[data-page="digitalizacion"] {
+  background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
+}
+.card[data-page="crecimiento-economico"] {
+  background: url('https://images.unsplash.com/photo-1542744173-05336fcc7ad4?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
+}
+.card[data-page="trabajo-rural"] {
+  background: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
+}
+
+
+/* === DETALLE === */
+.detail-page {
+  display: none;
+  max-width: 900px;
+  margin: 40px auto;
+  background: white;
+  padding: 40px 35px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+.detail-page.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+.detail-page h2 {
+  color: #007acc;
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+.detail-page p {
+  line-height: 1.7;
+  font-size: 16px;
+}
+.detail-page ul {
+  line-height: 1.8;
+}
+.back-btn {
+  display: inline-block;
+  margin-top: 25px;
+  background-color: #28a745;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  font-weight: 600;
+}
+.back-btn:hover {
+  background-color: #218838;
+  transform: translateY(-3px);
+}
+
+
+/* === FOOTER === */
+footer {
+  background-color: #007acc;
+  color: white;
+  text-align: center;
+  padding: 25px;
+  margin-top: 50px;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+</style>
+</head>
+
+
+<body>
+
+
+<header class="fade-in">
+  <h1>ODS 8: Trabajo Decente y Crecimiento Económico</h1>
+  <p>Promovemos empleos dignos, sostenibles e inclusivos para todas las personas</p>
+</header>
+
+
+<section id="main-section" class="fade-in">
+  <div class="intro">
+    <h2>¿Qué es el ODS 8?</h2>
+    <p>El Objetivo de Desarrollo Sostenible 8 busca fomentar un crecimiento económico sostenido, inclusivo y sostenible, el empleo pleno y productivo, y el trabajo decente para todos.</p>
+  </div>
+
+
+  <div class="card-grid">
+    <div class="card" data-page="trabajo-decente">
+      <div class="card-content">
+        <h3>Trabajo Decente</h3>
+        <p>Condiciones laborales seguras, salarios justos, igualdad de oportunidades y respeto a los derechos laborales.</p>
+        <button class="btn" data-page="trabajo-decente">Saber más</button>
+      </div>
+    </div>
+
+
+    <div class="card" data-page="juventud-empleo">
+      <div class="card-content">
+        <h3>Juventud y Empleo</h3>
+        <p>Promoción del empleo juvenil mediante formación técnica, pasantías y programas de inserción laboral.</p>
+        <button class="btn" data-page="juventud-empleo">Programas activos</button>
+      </div>
+    </div>
+
+
+    <div class="card" data-page="emprendimiento">
+      <div class="card-content">
+        <h3>Emprendimiento Sostenible</h3>
+        <p>Apoyo a pequeñas empresas, economía social y emprendimientos con impacto positivo en la comunidad.</p>
+        <button class="btn" data-page="emprendimiento">Ver iniciativas</button>
+      </div>
+    </div>
+
+
+    <div class="card" data-page="igualdad-genero">
+      <div class="card-content">
+        <h3>Igualdad de Género en el Trabajo</h3>
+        <p>Acceso equitativo al empleo y a puestos de liderazgo para mujeres, reducción de la brecha salarial.</p>
+        <button class="btn" data-page="igualdad-genero">Conocer más</button>
+      </div>
+    </div>
+
+
+    <div class="card" data-page="trabajo-infantil">
+      <div class="card-content">
+        <h3>Trabajo Infantil y Esclavitud Moderna</h3>
+        <p>Erradicación del trabajo infantil y de cualquier forma de trabajo forzoso o explotación laboral.</p>
+        <button class="btn" data-page="trabajo-infantil">Campañas</button>
+      </div>
+    </div>
+
+
+    <div class="card" data-page="digitalizacion">
+      <div class="card-content">
+        <h3>Digitalización y Futuro Laboral</h3>
+        <p>Adaptación a los nuevos modelos laborales mediante tecnología, automatización y teletrabajo.</p>
+        <button class="btn" data-page="digitalizacion">Transformación digital</button>
+      </div>
+    </div>
+
+
+    <div class="card" data-page="crecimiento-economico">
+      <div class="card-content">
+        <h3>Crecimiento Económico Sostenible</h3>
+        <p>Fomento de industrias sostenibles, innovación y aumento de la productividad a través de la tecnología.</p>
+        <button class="btn" data-page="crecimiento-economico">Leer más</button>
+      </div>
+    </div>
+
+
+    <div class="card" data-page="trabajo-rural">
+      <div class="card-content">
+        <h3>Trabajo en el Sector Rural</h3>
+        <p>Mejorar las condiciones laborales en zonas rurales y apoyar el desarrollo local inclusivo.</p>
+        <button class="btn" data-page="trabajo-rural">Ver proyectos</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- === DETALLE === -->
+<section id="trabajo-decente" class="detail-page">
+  <h2>Trabajo Decente</h2>
+  <p>El trabajo decente implica condiciones laborales seguras, acceso a un salario justo, igualdad de oportunidades, protección social y respeto pleno a los derechos laborales.</p>
+  <ul>
+    <li>Condiciones de trabajo seguras y saludables.</li>
+    <li>Salarios justos que permitan una vida digna.</li>
+    <li>Igualdad de oportunidades sin discriminación.</li>
+    <li>Respeto a los derechos laborales y protección contra la explotación.</li>
+  </ul>
+  <button class="back-btn">← Volver</button>
+</section>
+
+
+<section id="juventud-empleo" class="detail-page">
+  <h2>Juventud y Empleo</h2>
+  <p>Fomentar el empleo juvenil es vital para garantizar el desarrollo sostenible. Se promueven programas de formación técnica, pasantías y apoyo a la inserción laboral para jóvenes.</p>
+  <button class="back-btn">← Volver</button>
+</section>
+
+
+<section id="emprendimiento" class="detail-page">
+  <h2>Emprendimiento Sostenible</h2>
+  <p>El apoyo a pequeñas empresas y emprendimientos sociales impulsa el desarrollo comunitario y genera empleo digno y sostenible.</p>
+  <button class="back-btn">← Volver</button>
+</section>
+
+
+<section id="igualdad-genero" class="detail-page">
+  <h2>Igualdad de Género en el Trabajo</h2>
+  <p>Promover la igualdad de género es crucial para cerrar brechas salariales y lograr que las mujeres accedan a puestos de liderazgo y a un empleo equitativo.</p>
+  <button class="back-btn">← Volver</button>
+</section>
+
+
+<section id="trabajo-infantil" class="detail-page">
+  <h2>Trabajo Infantil y Esclavitud Moderna</h2>
+  <p>Se trabaja para erradicar el trabajo infantil y cualquier forma de trabajo forzoso o explotación, asegurando un futuro digno para niños y niñas.</p>
+  <button class="back-btn">← Volver</button>
+</section>
+
+
+<section id="digitalizacion" class="detail-page">
+  <h2>Digitalización y Futuro Laboral</h2>
+  <p>La adaptación a nuevos modelos laborales incluye la automatización, la tecnología y el teletrabajo, transformando positivamente el mercado laboral.</p>
+  <button class="back-btn">← Volver</button>
+</section>
+
+
+<section id="crecimiento-economico" class="detail-page">
+  <h2>Crecimiento Económico Sostenible</h2>
+  <p>Impulsamos industrias sostenibles, innovación y aumento de productividad mediante tecnologías limpias para lograr un crecimiento económico responsable.</p>
+  <button class="back-btn">← Volver</button>
+</section>
+
+
+<section id="trabajo-rural" class="detail-page">
+  <h2>Trabajo en el Sector Rural</h2>
+  <p>Mejorar las condiciones laborales y apoyar el desarrollo local en zonas rurales es esencial para una economía inclusiva y sostenible.</p>
+  <button class="back-btn">← Volver</button>
+</section>
+
+
+<footer>
+  © 2025 ODS 8 | Trabajo Decente y Crecimiento Económico para todos
+</footer>
+
+
+<script>
+const buttons = document.querySelectorAll('.btn');
+const backButtons = document.querySelectorAll('.back-btn');
+const mainSection = document.getElementById('main-section');
+const detailPages = document.querySelectorAll('.detail-page');
+
+
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const pageId = btn.getAttribute('data-page');
+    mainSection.style.display = 'none';
+    detailPages.forEach(page => {
+      if (page.id === pageId) {
+        page.classList.add('show');
+        window.scrollTo(0, 0);
+      } else {
+        page.classList.remove('show');
+      }
+    });
+  });
+});
+
+
+backButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    detailPages.forEach(page => page.classList.remove('show'));
+    mainSection.style.display = 'block';
+    window.scrollTo(0, 0);
+  });
+});
+</script>
+</body>
+</html>
+
+
